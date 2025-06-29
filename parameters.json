@@ -1,0 +1,57 @@
+{
+  "webhook": {
+    "method": "POST",
+    "endpoint": "/voice-ai-receptionist"
+  },
+  "agents": {
+    "helperAgent": {
+      "name": "Helper Agent",
+      "chatModel": {
+        "provider": "Google",
+        "model": "gemini-pro"
+      },
+      "tools": [
+        {
+          "name": "Calculator",
+          "type": "utility"
+        }
+      ]
+    },
+    "calendarAgent": {
+      "name": "Calendar Agent",
+      "chatModel": {
+        "provider": "Google",
+        "model": "gemini-pro"
+      },
+      "tools": [
+        {
+          "name": "Google Calendar",
+          "operations": [
+            {
+              "name": "Get Appointments",
+              "type": "getAll"
+            },
+            {
+              "name": "Book Appointment",
+              "type": "create"
+            },
+            {
+              "name": "Update Appointment",
+              "type": "update"
+            },
+            {
+              "name": "Cancel Appointment",
+              "type": "delete"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "response": {
+    "outputWebhook": {
+      "enabled": true,
+      "description": "Respond to Webhook after processing"
+    }
+  }
+}
